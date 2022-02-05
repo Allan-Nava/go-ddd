@@ -7,6 +7,6 @@ package todo
 *
  */
 
-type createTodoRequest struct {
-	Name string `json:"name"`
+type initTodoResponse struct {
+	Todo Todo `json:"todo"`
 }
