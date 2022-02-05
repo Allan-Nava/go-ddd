@@ -13,6 +13,9 @@ type Configuration struct {
 	AppEnv      string `env:"APP_ENV"`
 	LogLevel    string `env:"LOG_LEVEL"`
 	RunningMode string `env:"RUNNING_MODE"` //fallback or main
+	DBName		string `env:"DB_NAME"`
+	DBUsername	string `env:"DB_USERNAME"`
+	
 }
 
 func SetEnvConfig() {
