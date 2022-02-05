@@ -8,13 +8,14 @@ package main
  */
 
 import (
-	"github.com/Allan-Nava/go-ddd/config"
-	"github.com/Allan-Nava/go-ddd/utils"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/sirupsen/logrus"
+
+	"github.com/Allan-Nava/go-ddd/config"
+	"github.com/Allan-Nava/go-ddd/utils"
 )
 
 func main() {
@@ -33,4 +34,31 @@ func main() {
 	utils.SetupEnv() //dotenv
 	config.SetEnvConfig()
 	//
+	// need to fix
+	//database connections
+	/*dbConn := database.InitDB()
+
+	//stores
+	todoStore := todo.MySqlTodoStore{DB: dbConn}
+
+	serv := todo.TodoService{
+		Store: &todoStore,
+	}
+
+	//handlers
+	todoHand := todo.TodoHandler{Service: &serv}
+
+	//health check endpoint
+	f.Get("/health", func(c *fiber.Ctx) error {
+		return c.SendStatus(http.StatusOK)
+	})
+
+	//customer api
+	todos := f.Group("/todos")
+	todos.Get("/", nil, todoHand.GetAll)
+
+	//swagger setup
+	f.Get("/swagger/*", swagger.HandlerDefault) // default
+
+	*/
 }
