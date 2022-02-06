@@ -8,6 +8,8 @@ package main
  */
 
 import (
+	"fmt"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -15,6 +17,8 @@ import (
 	"github.com/sirupsen/logrus"
 
 	"github.com/Allan-Nava/go-ddd/config"
+	"github.com/Allan-Nava/go-ddd/database"
+	"github.com/Allan-Nava/go-ddd/todo"
 	"github.com/Allan-Nava/go-ddd/utils"
 )
 
@@ -36,13 +40,15 @@ func main() {
 	//
 	// need to fix
 	//database connections
-	/*dbConn := database.InitDB()
-
+	dbConn := database.InitDB()
 	//stores
 	todoStore := todo.MySqlTodoStore{DB: dbConn}
+	fmt.Printf("%v ", todoStore)
+	//services
+	/*todoServ := todo.TodoService{Store: &todoStore}
 
 	serv := todo.TodoService{
-		Store: &todoStore,
+		Store: &todoServ,
 	}
 
 	//handlers
@@ -59,6 +65,6 @@ func main() {
 
 	//swagger setup
 	f.Get("/swagger/*", swagger.HandlerDefault) // default
-
+	//
 	*/
 }

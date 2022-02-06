@@ -1,9 +1,9 @@
-package db
+package database
 
 /*
 * Copyright © 2022 Allan Nava <>
 * Created 05/02/2022
-* Updated 05/02/2022
+* Updated 06/02/2022
 *
  */
 
@@ -16,13 +16,6 @@ import (
 func InitDB() *gorm.DB {
 	//
 	//config := config.CONFIGURATION
-
-	// github.com/mattn/go-sqlite3
-	db := sqlite.Open("gorm.db")
-	conn, err := gorm.Open(db)
-	if err != nil {
-		logrus.Fatalf("error connection on %s, err: %s", db, err.Error())
-	}
 	/*dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true", config.dbUsername, config.dbPassword, config.dbHost, config.dbPort, config.dbName )
 	conn, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
@@ -31,6 +24,15 @@ func InitDB() *gorm.DB {
 	db, _ := conn.DB()
 	db.SetMaxIdleConns(idle)
 	db.SetMaxOpenConns(max)*/
+
+	// github.com/mattn/go-sqlite3
+	dsn := sqlite.Open("gorm.db")
+	conn, err := gorm.Open(dsn, &gorm.Config{})
+	if err != nil {
+		logrus.Fatalf("error connection on %s, err: %s", dsn, err.Error())
+	}
+	db, _ := conn.DB()
+	db.SetMaxIdleConns(10)
 	//
 	return conn
 }

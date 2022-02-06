@@ -20,3 +20,10 @@ func (s *TodoService) All() ([]Todo, error) {
 }
 
 //
+func (s *TodoService) Create(todo *Todo) error {
+	err := s.Store.Create(todo)
+	if err != nil {
+		return err
+	}
+	return nil
+}
