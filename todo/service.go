@@ -24,8 +24,17 @@ func (s *TodoService) All() ([]Todo, error) {
 
 //
 func (s *TodoService) Create(todo *Todo) error {
-	fmt.Print("All()")
+	fmt.Print("Create()")
 	err := s.Store.Create(todo)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *TodoService) Update(todo *Todo) error {
+	fmt.Print("Updated()")
+	err := s.Store.Update(todo)
 	if err != nil {
 		return err
 	}

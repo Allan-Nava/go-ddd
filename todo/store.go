@@ -22,7 +22,7 @@ type MySqlTodoStore struct {
 	DB *gorm.DB
 }
 
-func (s *MySqlTodoStore) GetAll(name string) ([]Todo, error) {
+func (s *MySqlTodoStore) GetAll() ([]Todo, error) {
 	var todo []Todo
 	query := s.DB.Table("customer").Select("*").Find(&todo)
 	if query.Error != nil {
@@ -45,7 +45,7 @@ func (s *MySqlTodoStore) Create(todo *Todo) error {
 
 //
 
-func (s *MySqlTodoStore) Update(todo Todo) error {
+func (s *MySqlTodoStore) Update(todo *Todo) error {
 	query := s.DB.Model(&Todo{}).Where("id = ?", todo.ID).Update("name", todo.Name)
 	if query.Error != nil {
 		logrus.Error(query.Error.Error())

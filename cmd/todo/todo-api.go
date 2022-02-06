@@ -9,7 +9,9 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 
+	swagger "github.com/arsmn/fiber-swagger/v2"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -45,7 +47,7 @@ func main() {
 	todoStore := todo.MySqlTodoStore{DB: dbConn}
 	fmt.Printf("%v ", todoStore)
 	//services
-	/*todoServ := todo.TodoService{Store: todoStore}
+	todoServ := todo.TodoService{Store: todoStore}
 	//fmt.Printf("todoServ: %v ", todoServ)
 	//handlers
 	todoHand := todo.TodoHandler{Service: &todoServ}
@@ -57,10 +59,9 @@ func main() {
 
 	//customer api
 	todos := f.Group("/todos")
-	todos.Get("/", nil, todoHand.GetAll())
+	todos.Get("/", nil, todoHand.GetAll)
 
 	//swagger setup
 	f.Get("/swagger/*", swagger.HandlerDefault) // default
 	//
-	*/
 }
