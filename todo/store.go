@@ -14,8 +14,8 @@ import (
 
 type TodoStore interface {
 	GetAll() ([]Todo, error)
-	Create(todo *Todo) error
-	Update(todo *Todo) error
+	//Create(todo *Todo) error
+	//Update(todo *Todo) error
 }
 
 type MySqlTodoStore struct {
@@ -33,9 +33,8 @@ func (s *MySqlTodoStore) GetAll() ([]Todo, error) {
 }
 
 //
-
 func (s *MySqlTodoStore) Create(todo *Todo) error {
-	query := s.DB.Save(todo)
+	query := s.DB.Save(*todo)
 	if query.Error != nil {
 		logrus.Error(query.Error.Error())
 		return query.Error

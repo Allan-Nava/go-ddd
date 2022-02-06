@@ -13,8 +13,8 @@ type TodoService struct {
 }
 
 //
-func (s *TodoService) All() ([]Todo, error) {
-	fmt.Print("All()")
+func (s *TodoService) GetAll() ([]Todo, error) {
+	fmt.Print("GetAll()")
 	todos, err := s.Store.GetAll()
 	if err != nil {
 		return nil, err
@@ -23,7 +23,7 @@ func (s *TodoService) All() ([]Todo, error) {
 }
 
 //
-func (s *TodoService) Create(todo *Todo) error {
+/*func (s *TodoService) Create(todo *Todo) error {
 	fmt.Print("Create()")
 	err := s.Store.Create(todo)
 	if err != nil {
@@ -40,3 +40,4 @@ func (s *TodoService) Update(todo *Todo) error {
 	}
 	return nil
 }
+*/
