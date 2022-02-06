@@ -46,9 +46,10 @@ func main() {
 	fmt.Printf("%v ", todoStore)
 	//services
 	/*todoServ := todo.TodoService{Store: &todoStore}
+	//encProfServ := encodingprofile.EncodingProfileService{Store: &encProfStore}
 
-	serv := todo.TodoService{
-		Store: &todoServ,
+	serv := todo.Todo{
+		todoServ: &todoServ,
 	}
 
 	//handlers

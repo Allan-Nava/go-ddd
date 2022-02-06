@@ -8,6 +8,7 @@ package todo
  */
 type TodoService struct {
 	Store TodoStore
+	//TodoService *todo.TodoService
 }
 
 //
