@@ -45,15 +45,10 @@ func main() {
 	todoStore := todo.MySqlTodoStore{DB: dbConn}
 	fmt.Printf("%v ", todoStore)
 	//services
-	/*todoServ := todo.TodoService{Store: &todoStore}
-	//encProfServ := encodingprofile.EncodingProfileService{Store: &encProfStore}
-
-	serv := todo.Todo{
-		todoServ: &todoServ,
-	}
-
+	/*todoServ := todo.TodoService{Store: todoStore}
+	//fmt.Printf("todoServ: %v ", todoServ)
 	//handlers
-	todoHand := todo.TodoHandler{Service: &serv}
+	todoHand := todo.TodoHandler{Service: &todoServ}
 
 	//health check endpoint
 	f.Get("/health", func(c *fiber.Ctx) error {
@@ -62,7 +57,7 @@ func main() {
 
 	//customer api
 	todos := f.Group("/todos")
-	todos.Get("/", nil, todoHand.GetAll)
+	todos.Get("/", nil, todoHand.GetAll())
 
 	//swagger setup
 	f.Get("/swagger/*", swagger.HandlerDefault) // default

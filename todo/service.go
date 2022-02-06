@@ -1,5 +1,7 @@
 package todo
 
+import "fmt"
+
 /*
 * Copyright © 2022 Allan Nava <>
 * Created 05/02/2022
@@ -8,11 +10,11 @@ package todo
  */
 type TodoService struct {
 	Store TodoStore
-	//TodoService *todo.TodoService
 }
 
 //
 func (s *TodoService) All() ([]Todo, error) {
+	fmt.Print("All()")
 	todos, err := s.Store.GetAll()
 	if err != nil {
 		return nil, err
@@ -22,6 +24,7 @@ func (s *TodoService) All() ([]Todo, error) {
 
 //
 func (s *TodoService) Create(todo *Todo) error {
+	fmt.Print("All()")
 	err := s.Store.Create(todo)
 	if err != nil {
 		return err
