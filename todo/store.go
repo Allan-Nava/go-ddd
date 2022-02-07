@@ -13,6 +13,7 @@ import (
 )
 
 type TodoStore interface {
+	//
 	GetAll() ([]Todo, error)
 	//Create(todo *Todo) error
 	//Update(todo *Todo) error
@@ -22,6 +23,9 @@ type MySqlTodoStore struct {
 	DB *gorm.DB
 }
 
+//
+//Create(todo *Todo) error
+//Update(todo *Todo) error
 func (s *MySqlTodoStore) GetAll() ([]Todo, error) {
 	var todo []Todo
 	query := s.DB.Table("customer").Select("*").Find(&todo)
