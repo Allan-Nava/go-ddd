@@ -15,7 +15,7 @@ import (
 type TodoStore interface {
 	//
 	GetAll() ([]Todo, error)
-	//Create(todo *Todo) error
+	Create(todo *Todo) error
 	//Update(todo *Todo) error
 }
 
