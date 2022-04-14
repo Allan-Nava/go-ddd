@@ -53,12 +53,18 @@ func (h *TodoHandler) GetAll(c *fiber.Ctx) error {
 // @Router       /customers [post]
 func (h *TodoHandler) CreateTodo(c *fiber.Ctx) error {
 
-	var requestBody createTodoRequest
+	requestBody := new(TestValidatorRequest)
 
 	if err := c.BodyParser(&requestBody); err != nil {
 		return err
 	}
 	logrus.Debugf("into CreateCustomer with body:", requestBody)
+	//
+	errors := ValidateStruct(*requestBody)
+	if errors != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(errors)
+
+	}
 	cust, err := h.Service.Create(c.Context(), requestBody.Name)
 	if err != nil {
 		return c.Status(http.StatusInternalServerError).JSON(&utils.ApiError{Message: err.Error()})
