@@ -6,7 +6,8 @@ type ErrorMess struct {
 }
 
 type ApiError struct {
-	Message string `json:"message"`
+	Message  string `json:"message"`
+	Response string `json:"response"`
 }
 type ApiMessage struct {
 	Message  string `json:"message"`

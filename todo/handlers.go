@@ -53,7 +53,7 @@ func (h *TodoHandler) GetAll(c *fiber.Ctx) error {
 // @Router       /customers [post]
 func (h *TodoHandler) CreateTodo(c *fiber.Ctx) error {
 
-	requestBody := new(TestValidatorRequest)
+	requestBody := new(createTodoRequest)
 
 	if err := c.BodyParser(&requestBody); err != nil {
 		return err
@@ -69,5 +69,5 @@ func (h *TodoHandler) CreateTodo(c *fiber.Ctx) error {
 	if err != nil {
 		return c.Status(http.StatusInternalServerError).JSON(&utils.ApiError{Message: err.Error()})
 	}
-	return c.Status(http.StatusCreated).JSON(requestBody)
+	return c.Status(http.StatusCreated).JSON(cust)
 }

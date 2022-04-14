@@ -22,7 +22,7 @@ type createTodoRequest struct {
 var validate = validator.New()
 
 //
-func ValidateStruct(request TestValidatorRequest) *utils.ApiError {
+func ValidateStruct(request createTodoRequest) *utils.ApiError {
 	var errorReturn *utils.ApiError
 	err := validate.Struct(request)
 	if err != nil {
