@@ -3,7 +3,7 @@ module github.com/Allan-Nava/go-ddd
 go 1.17
 
 require (
-	github.com/caarlos0/env/v6 v6.9.1
+	github.com/caarlos0/env/v6 v6.9.2
 	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/sirupsen/logrus v1.8.1
 )
