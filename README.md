@@ -1,7 +1,6 @@
 # Go Domain Drived Design / Service repository pattern
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/Allan-Nava/go-ddd)](https://goreportcard.com/report/github.com/Allan-Nava/go-ddd)
-
 [![GoDoc](https://godoc.org/github.com/Allan-Nava/go-ddd?status.svg)](https://godoc.org/github.com/Allan-Nava/go-ddd)
 
 
