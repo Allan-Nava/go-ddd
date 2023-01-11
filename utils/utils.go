@@ -14,3 +14,19 @@ func Contains(s []string, str string) bool {
 	return true
 }
 //
+
+func ContainsInt(s []int, n int) bool {
+	for _, v := range s {
+		if v == n {
+			return true
+		}
+	}
+	return false
+}
+//
+// print struct json format to console
+func PrettyPrint(i interface{}) string {
+	s, _ := json.MarshalIndent(i, "", "\t")
+	return string(s)
+}
+
