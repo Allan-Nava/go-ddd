@@ -13,7 +13,8 @@ COPY . .
 # Produce binary named main
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -a -o  main cmd/todo/todo-api.go
 #################
-FROM phusion/baseimage:focal-1.2.0
+#FROM phusion/baseimage:focal-1.2.0
+FROM phusion/baseimage:jammy-1.0.1
 #
 COPY --from=build /app/main .
 #
