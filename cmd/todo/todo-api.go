@@ -45,9 +45,10 @@ func main() {
 	dbConn := database.InitDB()
 	//stores
 	todoStore := todo.MySqlTodoStore{DB: dbConn}
-	fmt.Printf("%v ", todoStore)
+	//fmt.Printf("%v ", todoStore)
 	//services
-	todoServ := todo.TodoService{Store: &todoStore}
+	//todoServ := todo.TodoService{Store: &todoStore}
+	todoServ := todo.NewService(&todoStore)
 	//fmt.Printf("todoServ: %v ", todoServ)
 	//handlers
 	todoHand := todo.TodoHandler{Service: &todoServ}

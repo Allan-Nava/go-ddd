@@ -13,18 +13,17 @@ type ITodoService interface {
 	GetAll() ([]Todo, error)
 	Create(name string) error
 }
-
-
+//
 type TodoService struct {
 	store TodoStore
 }
-
+//
 func NewService(todoStore TodoStore) ITodoService{
 	return &TodoService{
-
+		store: todoStore
 	}
 }
-
+//
 //
 func (s *TodoService) GetAll() ([]Todo, error) {
 	fmt.Print("GetAll()")
