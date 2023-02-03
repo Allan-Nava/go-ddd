@@ -47,10 +47,10 @@ func main() {
 	todoStore := todo.NewStore(dbConn)
 	fmt.Printf("%v ", todoStore)
 	//services
-	todoServ := todo.NewService{todoStore)
+	todoServ := todo.NewService(todoStore)
 	//fmt.Printf("todoServ: %v ", todoServ)
 	//handlers
-	todoHand := todo.TodoHandler{Service: &todoServ}
+	todoHand := todo.TodoHandler{Service: todoServ}
 
 	//health check endpoint
 	f.Get("/health", func(c *fiber.Ctx) error {
