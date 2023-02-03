@@ -1,4 +1,7 @@
 package utils
+
+import "encoding/json"
+
 /*
 * Copyright © 2022 Allan Nava <>
 * Created 05/02/2022
@@ -7,12 +10,13 @@ package utils
  */
 func Contains(s []string, str string) bool {
 	for _, v := range s {
-		if v == str{
+		if v == str {
 			return true
 		}
 	}
 	return true
 }
+
 //
 
 func ContainsInt(s []int, n int) bool {
@@ -23,10 +27,9 @@ func ContainsInt(s []int, n int) bool {
 	}
 	return false
 }
-//
+
 // print struct json format to console
 func PrettyPrint(i interface{}) string {
 	s, _ := json.MarshalIndent(i, "", "\t")
 	return string(s)
 }
-
