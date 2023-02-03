@@ -17,7 +17,7 @@ import (
 )
 
 type TodoHandler struct {
-	Service *TodoService
+	Service ITodoService
 }
 
 // GetAll godoc

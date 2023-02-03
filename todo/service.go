@@ -13,37 +13,36 @@ type ITodoService interface {
 	GetAll() ([]Todo, error)
 	Create(name string) error
 }
-//
+
 type todoService struct {
 	store TodoStore
 }
-//
-func NewService(todoStore TodoStore) ITodoService{
+
+func NewService(todoStore TodoStore) ITodoService {
 	return &todoService{
-		store: todoStore
+		store: todoStore,
 	}
 }
-//
-//
+
 func (s *todoService) GetAll() ([]Todo, error) {
 	fmt.Print("GetAll()")
-	todos, err := s.Store.GetAll()
+	todos, err := s.store.GetAll()
 	if err != nil {
 		return nil, err
 	}
 	return todos, nil
 }
 
-//
 func (s *todoService) Create(name string) error {
 	fmt.Printf("Create() %v", name)
 	todo := &Todo{Name: name}
-	err := s.Store.Create(todo)
+	err := s.store.Create(todo)
 	if err != nil {
 		return err
 	}
 	return nil
 }
+
 /*
 func (s *todoService) Update(todo *Todo) error {
 	fmt.Print("Updated()")
