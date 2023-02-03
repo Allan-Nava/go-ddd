@@ -8,8 +8,21 @@ import "fmt"
 * Updated 05/02/2022
 *
  */
+
+type ITodoService interface {
+	GetAll() ([]Todo, error)
+	Create(name string) error
+}
+
+
 type TodoService struct {
-	Store TodoStore
+	store TodoStore
+}
+
+func NewService(todoStore TodoStore) ITodoService{
+	return &TodoService{
+
+	}
 }
 
 //
