@@ -44,11 +44,10 @@ func main() {
 	//database connections
 	dbConn := database.InitDB()
 	//stores
-	todoStore := todo.MySqlTodoStore{DB: dbConn}
-	//fmt.Printf("%v ", todoStore)
+	todoStore := todo.NewStore(dbConn)
+	fmt.Printf("%v ", todoStore)
 	//services
-	//todoServ := todo.TodoService{Store: &todoStore}
-	todoServ := todo.NewService(&todoStore)
+	todoServ := todo.NewService{todoStore)
 	//fmt.Printf("todoServ: %v ", todoServ)
 	//handlers
 	todoHand := todo.TodoHandler{Service: &todoServ}
@@ -79,7 +78,7 @@ func main() {
 		OAuth2RedirectUrl: "http://localhost:8080/swagger/oauth2-redirect.html",
 	}))
 
-	fmt.Println("\nTodo CUSTOMER API")
+	fmt.Println("\nTodo API")
 	fmt.Printf("\nENV: %s", config.CONFIGURATION.AppEnv)
 	fmt.Printf("\nRUNNING MODE: %s", config.CONFIGURATION.RunningMode)
 	f.Listen("0.0.0.0:8080")
