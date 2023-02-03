@@ -65,7 +65,7 @@ func (h *TodoHandler) CreateTodo(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(errors)
 
 	}
-	cust, err := h.Service.Create(c.Context(), requestBody.Name)
+	cust, err := h.Service.Create(requestBody.Name)
 	if err != nil {
 		return c.Status(http.StatusInternalServerError).JSON(&utils.ApiError{Message: err.Error()})
 	}
