@@ -3,7 +3,7 @@ package todo
 /*
 * Copyright © 2022 Allan Nava <>
 * Created 05/02/2022
-* Updated 05/02/2022
+* Updated 04/03/2025
 *
  */
 
@@ -24,13 +24,13 @@ func NewStore(db *gorm.DB) TodoStore {
 		DB: db,
 	}
 }
+
 type mySqlTodoStore struct {
 	DB *gorm.DB
 }
 
-//
-//Create(todo *Todo) error
-//Update(todo *Todo) error
+// Create(todo *Todo) error
+// Update(todo *Todo) error
 func (s *mySqlTodoStore) GetAll() ([]Todo, error) {
 	var todo []Todo
 	query := s.DB.Table("customer").Select("*").Find(&todo)
@@ -41,7 +41,6 @@ func (s *mySqlTodoStore) GetAll() ([]Todo, error) {
 	return todo, nil
 }
 
-//
 func (s *mySqlTodoStore) Create(todo *Todo) error {
 	query := s.DB.Save(*todo)
 	if query.Error != nil {
