@@ -18,9 +18,9 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/sirupsen/logrus"
 
+	"github.com/Allan-Nava/go-ddd/app/domains/todo"
 	"github.com/Allan-Nava/go-ddd/config"
 	"github.com/Allan-Nava/go-ddd/database"
-	"github.com/Allan-Nava/go-ddd/todo"
 	"github.com/Allan-Nava/go-ddd/utils"
 )
 
@@ -50,7 +50,7 @@ func main() {
 	todoServ := todo.NewService(todoStore)
 	//fmt.Printf("todoServ: %v ", todoServ)
 	//handlers
-	todoHand := todo.TodoHandler{Service: todoServ}
+	todoHand := todo.NewHandler(todoServ)
 
 	//health check endpoint
 	f.Get("/health", func(c *fiber.Ctx) error {
