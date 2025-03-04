@@ -1,5 +1,5 @@
 # Start from base image
-FROM golang:1.18-alpine as builder
+FROM golang:1.24-alpine as builder
 LABEL MAINTENAIR allan.nava@hiway.media
 # Set the current working directory inside the container
 WORKDIR /app
